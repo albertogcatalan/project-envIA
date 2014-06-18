@@ -1,0 +1,120 @@
+{% extends "layout.twig" %}
+
+{% block head %}
+<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+{% endblock %}
+
+
+
+
+{% block content %}
+<script type="text/javascript">
+
+$(function() {
+	
+	var items_conditions = 2;
+   
+    $('#add-condition').click(function() {
+        var item = { i: items_conditions };
+        $("#conditionTemplate").tmpl(item).appendTo("#condition-list");
+        items_conditions++;
+       	  
+    })
+
+        
+
+})
+
+</script>
+
+<script id="conditionTemplate" type="text/x-jquery-tmpl">
+	<div class="conditionContent" id="condition-${i}">
+		<hr>
+		<h3>Condición ${i}</h3>
+		
+			
+		<input type="hidden" name="condition-id[]" id="condition-id-${i}" value="">
+		<input type="text" class="input-xlarge pull-left" placeholder="Nombre de la condición ${i}" name="name-condition[]">
+        <div class="input-prepend input-append pull-right">
+		<span class="add-on">VPC (Valor por click) </span>
+		  <input class="span2" type="text" name="vpc-condition[]" placeholder="5">
+		</div>
+		
+		<input type="text" class="input-large" placeholder="Valor de la condición ${i}" name="value-condition[]">
+		
+		<input type="text" class="input-large" placeholder="Límite superior ${i}" name="limitUp-condition[]">
+		<input type="text" class="input-large" placeholder="Límite inferior ${i}" name="limitDown-condition[]">
+	</div>
+</script>
+
+<div class="span9">
+	<div class="hero-unit">
+	<h1>Nueva simulación</h1>
+	<p>Empieza creando tu simulación rellenando el siguiente formulario.</p>
+	<form class="form-signin" method="post" action="">
+        <h2 class="form-signin-heading">Datos básicos</h2>
+				
+				{% if nameError %}
+				<div class="alert alert-error">
+				  <strong>Error!</strong> El nombre es obligatorio.
+				</div>
+				{% endif %}
+				
+				{% if emailError %}
+				<div class="alert alert-error">
+				  <strong>Error!</strong> El email ya existe.
+				</div>
+				{% endif %}      
+				
+				{% if passError %}
+				<div class="alert alert-error">
+				  <strong>Error!</strong> Introduce 2 veces la contraseña.
+				</div>
+				{% endif %} 
+				
+		<input type="text" class="input-xlarge" placeholder="Nombre de tu simulación" name="name">
+		<div class="input-prepend pull-right">
+		<span class="add-on">Nº de días</span>
+		  <input class="span2" type="text" name="days" placeholder="1">
+		 
+		</div>
+		<br/>
+		<textarea type="text" class="span6 pull-left" rows="4" placeholder="Descripción de tu simulación" name="description"></textarea>
+		
+		
+		
+		
+		<br/>
+		<h3>Condición 1</h3>
+		<div id="condition-list">
+			<div class="conditionContent" id="condition-1">
+				<input type="hidden" name="condition-id[]" id="condition-id-1" value="">
+		        <input type="text" class="input-xlarge pull-left" placeholder="Nombre de la condición 1" name="name-condition[]">
+		        <div class="input-prepend input-append pull-right">
+				<span class="add-on">VPC (Valor por click) </span>
+				  <input class="span2" type="text" name="vpc-condition[]" placeholder="5">
+				</div>
+				
+				<input type="text" class="input-large" placeholder="Valor 1" name="value-condition[]">
+				
+				<input type="text" class="input-large" placeholder="Límite superior 1" name="limitUp-condition[]">
+				<input type="text" class="input-large" placeholder="Límite inferior 1" name="limitDown-condition[]">
+			</div>
+		</div>
+		
+        <a class="btn btn-info" id="add-condition"><i class="icon-plus-sign icon-white"></i> Añadir condición</a>
+       
+		<div class="form-actions">
+		  <input type="hidden" name="{{ typeAction }}" value="{{ typeAction }}"/>
+		  <button class="btn btn-large btn-primary" type="submit">Crear simulación</button>
+		  <button type="clear" class="btn btn-large">Cancelar</button>
+		</div>
+       
+      </form>
+
+	
+	</div>
+</div><!--/span-->
+
+
+{% endblock %}

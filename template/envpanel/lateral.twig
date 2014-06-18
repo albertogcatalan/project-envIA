@@ -1,0 +1,41 @@
+<div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Simulaciones activas</li>
+              {% for sim in lastSimulations %}
+              <li><a href="/envpanel/simulation/view/{{ sim.id }}">{{ sim.name }}</a></li>
+              {% else %}
+              <li>No hay simulaciones recientes</li>
+              {% endfor %}
+              
+
+             </ul>
+                
+          </div>
+          
+            {% if user.isNewInstall %}
+				<div class="alert alert-error">
+				  <strong>¡Atención!</strong> El usuario Administrador de tu instalación tiene la contraseña predeterminada. Es recomendable cambiarla para evitar problemas de seguridad.
+				</div>
+			{% endif %} 
+			
+			
+			{% if alertSuccess %}
+				<div class="alert alert-success" id="alertSuccess" style="display:none;">
+				  <strong>¡Yeah!</strong> 	Cambios realizados con éxito.</div>
+			{% endif %}
+			
+			{% if alertError %}
+				<div class="alert alert-error" id="alertError" style="display:none;">
+				  <strong>¡Atención!</strong> Ha ocurrido un error, vuelve a intentarlo.</div>
+			{% endif %}
+			
+			
+			<div class="alert alert-success" id="alertSuccess" style="display:none;">
+				  <strong>¡Yeah!</strong> 	Cambios realizados con éxito.</div>
+			
+			<div class="alert alert-error" id="alertError" style="display:none;">
+				  <strong>¡Atención!</strong> Ha ocurrido un error, vuelve a intentarlo.</div>
+
+        </div>        
+          

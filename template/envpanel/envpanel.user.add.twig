@@ -1,0 +1,63 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+<div class="span9">
+	<div class="hero-unit">
+	<h1>{% if u %}Editar usuario{% else %}Nuevo usuario {% endif %}</h1>
+	<p>{% if u %}Edita la configuración del usuario.{% else %}Crea un nuevo usuario para utilizar en la plataforma. {% endif %}</p>
+	<form class="form-signin" method="post" action="">
+        <h2 class="form-signin-heading">Datos básicos</h2>
+			{% if nameError %}
+			<div class="alert alert-error">
+			  <strong>Error!</strong> El nombre es obligatorio.
+			</div>
+			{% endif %}
+			<input type="text" class="input-xlarge" placeholder="Nombre de usuario" name="name" {% if u.name %} value="{{ u.name }}" {% endif %}>
+			
+			{% if mailError %}
+			<div class="alert alert-error">
+			  <strong>Error!</strong> El email ya existe.
+			</div>
+			{% endif %}
+			<input type="email" class="input-xlarge" placeholder="Email" name="email" {% if u.email %} value="{{ u.email }}" {% endif %}>
+			
+			{% if passError %}
+			<div class="alert alert-error">
+			  <strong>Error!</strong> Introduce 2 veces la contraseña.
+			</div>
+			{% endif %}
+			<input type="password" class="input-xlarge" placeholder="Contraseña" name="password">
+            <input type="password" class="input-xlarge" placeholder="Repetir contraseña" name="repeatPassword">
+            
+            <label class="radio">
+			  <input type="radio" name="level" id="optionUser" value="user" {% if u.level == "user" %}checked{% endif %}>
+			  Usuario básico (creación y gestión de simulaciones propias)
+			</label>
+            <label class="radio">
+			  <input type="radio" name="level" id="optionAdmin" value="admin" {% if u.level == "admin" %}checked{% endif %}>
+			  Privilegios de administrador (gestión de cualquier simulación y de usuarios)
+			</label>
+			
+			{% if typeAction == 'edit' %}
+			<label class="checkbox">
+			  <input type="checkbox" name="active" {% if u.active == "y" %}checked{% endif %}>
+			  Activar/desactivar usuario
+			</label>
+			{% endif %}
+      
+		<div class="form-actions">
+		  <input type="hidden" name="userID" value="{{ u.id }}"/>
+		  <input type="hidden" name="{{ typeAction }}" value="{{ typeAction }}"/>
+		  <button class="btn btn-large btn-primary" type="submit">{% if u %}Guardar{% else %}Crear usuario {% endif %}</button>
+		  <button type="clear" class="btn btn-large">Cancelar</button>
+		</div>
+       
+      </form>
+
+	
+	</div>
+</div><!--/span-->
+
+
+{% endblock %}

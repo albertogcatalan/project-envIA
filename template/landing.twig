@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Project envIA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<link rel="shortcut icon" href="static/img/icon.png" />
+	<link rel="apple-touch-icon" href="static/img/icon.png" />
+	
+    <!-- Le styles -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      /* Custom container */
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 700px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 72px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+    </style>
+    <link href="static/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    </head>
+
+  <body>
+
+    <div class="container-narrow">
+
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+        	
+          {% if user.name %}<li class="helloUser">Hola, {{ user.name }}</li>{% endif %}
+          <li class="active"><a href="/">Inicio</a></li>
+          <li><a href="/envpanel/">envPanel</a></li>
+          <li><a href="https://bitbucket.org/abelabs/project-envia/wiki/Home" target="_blank">Ayuda</a></li>
+          
+
+        </ul>
+        <h3 class="muted"><img src="static/img/icon.png" class="logo-landing" alt="logo"> Project envIA</h3>
+      </div>
+
+      <hr>
+
+      <div class="jumbotron">
+        <h1>La evolución de la simulación</h1>
+        <p class="lead">Comienza creando tu cuenta.</p>
+        <p><a class="btn btn-large btn-success" href="/register/">¡Empezar ahora!</a></p>
+        <p><b>Versión 0.3.1 (5 de Junio de 2013)</b></p>
+      </div>
+
+      <hr>
+
+      <div class="row-fluid marketing">
+        <div class="span6">
+          <h4>Simulaciones</h4>
+          <p>Recrea simulaciones de entornos totalmente configurados por tí.</p>
+
+          <h4>Métricas</h4>
+          <p>Recibe estadísticas y analíticas de la evolución de tu simulación.</p>
+          
+		   <h4>Concepto</h4>
+          <p>Ahora es el entorno quien se adapta a la necesidad.</p>
+
+
+          </div>
+
+        <div class="span6">
+          <h4>Framework Web</h4>
+          <p>PHP5 y Twig como centro del código.</p>
+
+          <h4>Escalabilidad</h4>
+          <p>Pequeño ¿verdad?, añade más clases y funcionalidades para adaptarlo a tus necesidades.</p>
+
+          <h4>Bitbucket.org</h4>
+          <p>Explora el código del framework en Bitbucket.</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="footer">
+        <p>&copy; Project envIA {{ "now"|date('Y') }}</p>
+      </div>
+
+    </div> <!-- /container -->
+
+   
+  </body>
+</html>

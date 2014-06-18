@@ -1,0 +1,32 @@
+<div id="modalProfile" class="modal hide fade in">  
+    <div class="modal-header">  
+        <a class="close" data-dismiss="modal">×</a>  
+        <h3>Ficha de usuario</h3>  
+    </div>  
+    <div class="modal-body">
+        <fieldset class="form-horizontal">
+            <div class="control-group">
+                <label for="nameP" class="control-label required">Nombre:</label>
+                <div class="controls">
+                    <input type="text" name="nameP" id="nameP" value="{{ user.name }}" maxlength="100" disabled="disabled">
+                </div>
+                <br/>
+                <label for="emailP" class="control-label required">Email:</label>
+                <div class="controls">
+                    <input type="text" name="emailP" id="emailP" value="{{ user.email }}" maxlength="100" disabled="disabled">
+                </div>
+                <br/>
+                <label for="typeP" class="control-label required">Tipo de usuario:</label><div class="controls">
+                    <input type="text" name="typeP" id="typeP" value="{% if user.admin %}Administrador{% else %}Usuario básico{% endif %} " maxlength="100" disabled="disabled">
+                </div>
+                
+            </div>
+        </fieldset>
+        
+    </div>  
+    <div class="modal-footer">
+        <a href="#" class="btn btn-primary" data-dismiss="modal">Cerrar</a> 
+          
+    </div>  
+</div>
+
